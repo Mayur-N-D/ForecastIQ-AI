@@ -1,0 +1,400 @@
+/* ========================= */
+/* GLOBAL */
+/* ========================= */
+
+body,
+.card,
+.navbar,
+.table,
+.form-control,
+.alert,
+.btn,
+.badge {
+  transition: all 0.3s ease;
+}
+
+body {
+  background: #f5f7fb;
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+.navbar {
+  background: white !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 14px 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #0d6efd !important;
+}
+
+/* ========================= */
+/* HEADINGS */
+/* ========================= */
+
+h2,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h2 {
+  color: #1e293b;
+}
+
+/* ========================= */
+/* CARDS */
+/* ========================= */
+
+.card {
+  border: none;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================= */
+/* KPI CARDS */
+/* ========================= */
+
+.card h2 {
+  font-size: 2rem;
+}
+
+.card small {
+  color: #6c757d;
+}
+
+/* ========================= */
+/* TABLE */
+/* ========================= */
+
+.table {
+  margin-top: 15px;
+}
+
+.table thead {
+  background: #f8fafc;
+}
+
+.table th {
+  font-weight: 700;
+  color: #475569;
+}
+
+.table-hover tbody tr:hover {
+  background: #f1f5f9;
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.btn-success {
+  width: 100%;
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.btn-primary {
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* ========================= */
+/* FORM INPUTS */
+/* ========================= */
+
+.form-control {
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #dbe2ea;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* ========================= */
+/* ALERTS */
+/* ========================= */
+
+.alert {
+  border-radius: 12px;
+  border: none;
+}
+
+/* ========================= */
+/* BADGES */
+/* ========================= */
+
+.badge {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* ========================= */
+/* CHARTS */
+/* ========================= */
+
+canvas {
+  margin-top: 20px;
+}
+
+/* ========================= */
+/* FORECAST HISTORY */
+/* ========================= */
+
+#historyTable tr {
+  transition: all 0.2s ease;
+}
+
+#historyTable tr:hover {
+  background: #f8fafc;
+}
+
+/* ========================= */
+/* ANIMATION */
+/* ========================= */
+
+.card,
+.alert,
+.btn {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+.dark-mode {
+  background: linear-gradient(
+    135deg,
+    #020617,
+    #0f172a,
+    #111827
+  );
+  color: #f8fafc;
+}
+
+/* Navbar */
+
+.dark-mode .navbar {
+  background: #1e293b !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .navbar-brand {
+  color: white !important;
+}
+
+/* Toggle Button */
+
+.dark-mode #themeToggle {
+  color: white !important;
+  border-color: #64748b !important;
+  background: transparent;
+}
+
+.dark-mode #themeToggle:hover {
+  background: #334155;
+}
+
+/* Cards */
+
+.dark-mode .card {
+  background: #1e293b;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .card:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Text */
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode p,
+.dark-mode span,
+.dark-mode strong,
+.dark-mode label {
+  color: white;
+}
+
+.dark-mode .text-muted {
+  color: #cbd5e1 !important;
+}
+
+.dark-mode small {
+  color: #cbd5e1 !important;
+}
+
+/* Confidence Card */
+
+.dark-mode #confidenceScore {
+  color: #facc15 !important;
+}
+
+/* Tables */
+
+.dark-mode .table {
+  color: white !important;
+}
+
+.dark-mode .table th {
+  background: #334155 !important;
+  color: white !important;
+}
+
+.dark-mode .table td {
+  background: #1e293b !important;
+  color: white !important;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) td {
+  background: #263449 !important;
+}
+
+.dark-mode .table-hover tbody tr:hover td {
+  background: #334155 !important;
+}
+
+/* Inputs */
+
+.dark-mode .form-control {
+  background: #334155;
+  color: white;
+  border-color: #475569;
+}
+
+.dark-mode .form-control:focus {
+  background: #334155;
+  color: white;
+  border-color: #60a5fa;
+}
+
+/* Buttons */
+
+.dark-mode .btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.dark-mode .btn-success {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+/* Alerts */
+
+.dark-mode .alert {
+  color: white !important;
+}
+
+.dark-mode .alert-success {
+  background: #14532d !important;
+  color: white !important;
+  border-color: #16a34a !important;
+}
+
+.dark-mode .alert-primary {
+  background: #1e40af !important;
+  color: white !important;
+}
+
+.dark-mode .alert-info {
+  background: #0f766e !important;
+  color: white !important;
+}
+
+.dark-mode .alert-warning {
+  background: #854d0e !important;
+  color: white !important;
+}
+
+/* Badge */
+
+.dark-mode .badge {
+  background: #2563eb !important;
+  color: white !important;
+}
+
+/* Horizontal Lines */
+
+.dark-mode hr {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Placeholder Text */
+
+.dark-mode ::placeholder {
+  color: #cbd5e1;
+}
+
+/* Links */
+
+.dark-mode a {
+  color: #60a5fa;
+}
+
+.dark-mode a:hover {
+  color: #93c5fd;
+}
+
+/* ========================= */
+/* EXPORT BUTTON FIX */
+/* ========================= */
+
+.btn-primary {
+    color: white !important;
+}
+
+.btn-primary:hover {
+    color: white !important;
+}
+
+.dark-mode .btn-primary {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    color: white !important;
+}
+
+.dark-mode .btn-primary:hover {
+    background: #1d4ed8 !important;
+    color: white !important;
+}

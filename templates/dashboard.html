@@ -1,0 +1,279 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Forecast Dashboard</h2>
+
+  <span class="badge bg-primary fs-6"> Forecast Horizon: {{ horizon }} </span>
+
+  <div class="alert alert-success">Dataset uploaded successfully.</div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <!-- <div class="card shadow p-4"> -->
+      <div class="card shadow p-4 border-start border-success border-4">
+        <h5 class="text-center">Revenue Forecast</h5>
+
+        <hr />
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <strong>Low</strong>
+            <br />
+            <span id="revLow">₹10L</span>
+          </div>
+
+          <div>
+            <strong>Expected</strong>
+            <br />
+            <span id="revExpected">₹12L</span>
+          </div>
+
+          <div>
+            <strong>High</strong>
+            <br />
+            <span id="revHigh">₹14L</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <div class="card shadow p-4"> -->
+      <div class="card shadow p-4 border-start border-primary border-4">
+        <h5 class="text-center">ROAS Forecast</h5>
+
+        <hr />
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <strong>Low</strong>
+            <br />
+            <span id="roasLow">4.1</span>
+          </div>
+
+          <div>
+            <strong>Expected</strong>
+            <br />
+            <span id="roasExpected">4.5</span>
+          </div>
+
+          <div>
+            <strong>High</strong>
+            <br />
+            <span id="roasHigh">4.8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <div class="card shadow p-4 text-center"> -->
+      <div class="card shadow p-4 border-start border-warning border-4">
+        <h6 class="text-muted">Confidence</h6>
+
+        <h2 class="fw-bold text-warning">
+          <h2 id="confidenceScore" class="fw-bold text-warning">
+            85%
+          </h2>
+        </h2>
+
+        <small> Forecast Reliability </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <div class="card shadow p-4">
+        <h4>Revenue Forecast Trend</h4>
+
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow p-4">
+        <h4>Channel Contribution</h4>
+
+        <canvas id="channelChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card shadow p-4">
+        <h4>AI Insights</h4>
+
+        <hr />
+
+        <div id="aiInsights">
+          <div class="alert alert-primary">
+            <strong>Key Driver:</strong>
+            Waiting for simulation...
+          </div>
+
+          <div class="alert alert-warning">
+            <strong>Risk:</strong>
+            Waiting for simulation...
+          </div>
+
+          <div class="alert alert-success">
+            <strong>Recommendation:</strong>
+            Waiting for simulation...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card shadow p-4">
+        <h4>Channel Performance Forecast</h4>
+
+        <hr />
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Revenue Contribution</th>
+              <th>ROAS Range</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Google Ads</td>
+              <td id="googleContribution">50%</td>
+              <td id="googleRoas">4.5 - 5.0</td>
+            </tr>
+
+            <tr>
+              <td>Meta Ads</td>
+              <td id="metaContribution">30%</td>
+              <td id="metaRoas">3.8 - 4.3</td>
+            </tr>
+
+            <tr>
+              <td>Microsoft Ads</td>
+              <td id="microsoftContribution">20%</td>
+              <td id="microsoftRoas">3.5 - 4.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card shadow p-4">
+        <h4>Budget Simulator</h4>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-4">
+            <label>Google Ads Budget</label>
+
+            <input
+              type="number"
+              id="googleBudget"
+              class="form-control"
+              value="50000"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label>Meta Ads Budget</label>
+
+            <input
+              type="number"
+              id="metaBudget"
+              class="form-control"
+              value="30000"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label>Microsoft Ads Budget</label>
+
+            <input
+              type="number"
+              id="microsoftBudget"
+              class="form-control"
+              value="20000"
+            />
+          </div>
+        </div>
+
+        <button id="simulateBtn" class="btn btn-success mt-4">
+          Simulate Forecast
+        </button>
+
+        <hr />
+
+        <div id="simulationResult">
+          <h5>Simulation Results</h5>
+
+          <p>
+            Revenue Forecast:
+            <span id="simRevenue"> -- </span>
+          </p>
+
+          <p>
+            ROAS Forecast:
+            <span id="simRoas"> -- </span>
+          </p>
+          <a href="/export-report" class="btn btn-primary mt-3"
+            >📄 Export Forecast Report</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card shadow p-4">
+        <h4>Forecast History</h4>
+
+        <hr />
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Revenue</th>
+              <th>ROAS</th>
+            </tr>
+          </thead>
+
+          <tbody id="historyTable">
+            {% if history %} {% for row in history %}
+
+            <tr>
+              <td>{{ row[2] }}</td>
+              <td>₹ {{ "{:,}".format(row[0]) }}</td>
+              <td>{{ row[1] }}</td>
+            </tr>
+
+            {% endfor %} {% else %}
+
+            <tr>
+              <td colspan="3" class="text-center">
+                No forecasts generated yet.
+              </td>
+            </tr>
+
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const revenueData = {{ revenue_data | tojson }};
+    const chartLabels = {{ labels | tojson }};
+  </script>
+  {% endblock %}
+</div>

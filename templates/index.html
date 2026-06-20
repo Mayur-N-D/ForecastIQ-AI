@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <h2 class="mb-4">AI Marketing Forecasting</h2>
+
+    <form action="/dashboard" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label> Upload Dataset </label>
+
+        <input type="file" name="file" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label> Forecast Horizon </label>
+
+        <select name="horizon" class="form-select">
+          <option value="30 Days">30 Days</option>
+          <option value="60 Days">60 Days</option>
+          <option value="90 Days">90 Days</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary">Generate Forecast</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
